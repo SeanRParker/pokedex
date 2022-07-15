@@ -31,6 +31,7 @@ function App() {
 
     const onGetDetails = (name) => async () => {
         /** code here **/
+        console.log("NAME: ", name)
     }
 
     return (

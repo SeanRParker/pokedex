@@ -1,0 +1,18 @@
+{
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "ft-flow"
+  ],
+  "rules": {
+    "ft-flow/boolean-style": [
+      2,
+      "boolean"
+    ],
+    // ... more rules
+  },
+  "settings": {
+    "ft-flow": {
+      "onlyFilesWithFlowAnnotation": false
+    }
+  }
+}
