@@ -40,7 +40,7 @@ function App() {
             <div className={'pokedex__search-input'}>
                 <input value={searchValue} onChange={onSearchValueChange} placeholder={'Search Pokemon'}/>
             </div>
-            <div className={'pokedex__content'}>
+            <div className={pokemonDetails ? 'pokedex__content pokedex__gutter' : 'pokedex__content'}>
                 {pokemon.length > 0 && (
                     <div className={'pokedex__search-results'}>
                         {

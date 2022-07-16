@@ -16,8 +16,11 @@ body {
 
 .pokedex__content {
   display: flex;
-  gap: 5rem;
   position:relative;
+}
+
+.pokedex__gutter {
+  gap: 5rem;
 }
 
 .pokedex__search-input {
