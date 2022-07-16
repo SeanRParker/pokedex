@@ -5,7 +5,7 @@ function App() {
     const [pokemonIndex, setPokemonIndex] = useState([])
     const [pokemon, setPokemon] = useState([])
     const [searchValue, setSearchValue] = useState('')
-    const [pokemonDetails, setPokemonDetails] = useState()
+    const [pokemonDetails, setPokemonDetails] = useState('')
 
     useEffect(() => {
         const fetchPokemon = async () => {
@@ -18,7 +18,7 @@ function App() {
         fetchPokemon().then(() => {
             /** noop **/
         })
-    }, [searchValue])
+    }, [searchValue, pokemonDetails])
 
     const onSearchValueChange = (event) => {
         const value = event.target.value
@@ -31,7 +31,8 @@ function App() {
 
     const onGetDetails = (name) => async () => {
         /** code here **/
-        console.log("NAME: ", name)
+        console.log("OnGetDetails clicked: ", name);
+        setPokemonDetails(name);
     }
 
     return (
@@ -56,13 +57,13 @@ function App() {
                         }
                     </div>
                 )}
+                <div className={'pokemon__details'}>
                 {
-                    pokemonDetails && (
                         <div className={'pokedex__details'}>
-                            {/*  code here  */}
+                            { pokemonDetails }
                         </div>
-                    )
                 }
+                </div>
             </div>
         </div>
     );

@@ -17,12 +17,15 @@ body {
 .pokedex__content {
   display: flex;
   gap: 5rem;
+  position:relative;
 }
 
 .pokedex__search-input {
 }
 
 .pokedex__search-results {
+  height: 80vh;
+  overflow:auto;
 }
 
 .pokedex__list-item {
