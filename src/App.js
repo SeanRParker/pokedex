@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllPokemon, fetchPokemonDetailsByName, fetchEvolutionChainById } from "./api";
+import Results from './results';
+import Details from './details';
 
 function App() {
     const [pokemonIndex, setPokemonIndex] = useState('')
@@ -31,8 +33,8 @@ function App() {
         setPokemonIndex(
             pokemon.filter(monster => monster.name.includes(value))
         )
-        
         console.log("List of pokemon: ", pokemonIndex);
+
     }
 
     const onGetDetails = (name) => async () => {
@@ -73,85 +75,29 @@ function App() {
         <div className={'pokedex__container'}>
             <div className={'pokedex__search-input'}>
                 <input value={searchValue} onChange={onSearchValueChange} placeholder={'Search Pokemon'}/>
-                </div>
-                {typeof pokemonIndex === 'string' && (
-                    <div className={pokemonDetails ? 'pokedex__content pokedex__gutter' : 'pokedex__content'}>
-                        <ul className={'pokedex__search-results'}>
-                            {
-                                pokemon.map(monster => {
-                                    return (
-                                        <li className={'pokedex__results__list-item'} key={monster.name}>
-                                            <span>
-                                                {monster.name}
-                                            </span>
-                                            <button onClick={onGetDetails(monster.name)}>Get Details</button>
-                                        </li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                )}
-                {pokemonIndex.length > 0 && (
+            </div>
+            {typeof pokemonIndex === 'string' && (
             <div className={pokemonDetails ? 'pokedex__content pokedex__gutter' : 'pokedex__content'}>
-                    <ul className={'pokedex__search-results'}>
-                        {
-                            pokemonIndex.map(monster => {
-                                return (
-                                    <li className={'pokedex__results__list-item'} key={monster.name}>
-                                        <span>
-                                            {monster.name}
-                                        </span>
-                                        <button onClick={onGetDetails(monster.name)}>Get Details</button>
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-                    {typeof pokemonDetails !== 'string' &&(
-                    <div className={'pokemon__details'}>
-                        <div className={'pokedex__details'}>
-                            <div className="pokedex__details__heading">
-                                <h2>{ pokemonDetails.name }</h2>
-                            </div>
-                            <div className="pokedex__details__body">
-                                <div className="pokedex__details__body__types">
-                                    <h2>Types</h2>
-                                    <ul>
-                                        {
-                                            pokemonDetails.typeList?.map((type, i) => {
-                                                return(
-                                                    <li className="pokedex__details__list-item" key={i}>{type}</li>
-                                                )
-                                            })
-                                        }
-                                    </ul>
-                                </div>
-                                <div className="pokedex__details__body__moves">
-                                    <h2>Moves</h2>
-                                    <ul>
-                                    {
-                                        pokemonDetails.moveList?.slice(0, 4).map((type, i) => {
-                                            return(
-                                                <li className="pokedex__details__list-item" key={i}>{type}</li>
-                                            )
-                                        })
-                                    }
-                                </ul>
-                                </div>
-                            </div>
-                            <div className="pokedex__details__footer">
-                                    <div className="pokedex__details__body__moves">
-                                    <h2>Evolutions</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    )}
-                    </div>
-                    )}
+            <Results seeDetail={onGetDetails} list={pokemon} />
+            {typeof pokemonDetails !== 'string' &&(
+                <Details details={pokemonDetails} />
+            )}
+            </div>
+            )}
+            {pokemonIndex.length > 0 && (
+                <div className={pokemonDetails ? 'pokedex__content pokedex__gutter' : 'pokedex__content'}>
+                <Results seeDetail={onGetDetails} list={pokemonIndex} />
+                
+                {typeof pokemonDetails !== 'string' &&(
+                    <Details details={pokemonDetails} />
+                )}
+            </div>
+            )}
+            {searchValue.length > 0 && pokemonIndex.length === 0 &&(
+                <p>No Pokemon found</p>
+            )}
         </div>
-    );
+    )
 }
 
 export default App;
