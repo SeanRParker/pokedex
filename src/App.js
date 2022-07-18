@@ -97,7 +97,7 @@ function App() {
             </div>
             )}
             {searchValue.length > 0 && pokemonIndex.length === 0 &&(
-                <p>No Pokemon found</p>
+                <p>No Results Found</p>
             )}
         </div>
     )

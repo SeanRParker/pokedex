@@ -46,8 +46,8 @@ When you are finished, please upload your completed work to your Github and invi
 
 Please take some time to answer the following questions. Your answers should go directly in this `readme`.
 
-- Given more time, what would you suggest for improving the performance of this app?
+- **Given more time, what would you suggest for improving the performance of this app?** Instead of using state for api calls I would set them as props and pass those around as that method is a little more performant than holding everything in state.
 
-- Is there anything you would consider doing if we were to go live with this app?
+- **Is there anything you would consider doing if we were to go live with this app?** Mostly design related things. Mock up something that looks like the pokemon retro gameboy games. Maybe change the red results box design and font to match that aesthetic. The jump to two columns from one is a bit jarring. I'd set it initially to two columns with an image placeholder where the detail box would appear after clicking "See Details".
 
-- What was the most challenging aspect of this work for you (if at all)?
+- **What was the most challenging aspect of this work for you (if at all)?** I've mostly been in VueJS the past few years, a lot of React has changed since then. Most of my time was spent mitigating a bug around the useEffect hook. The `pokemon` data kept resetting and mitigating the search filter. I was under the impression the `useEffect` replaced `componentDidMount`. While partially true that isn't the whole story. I think namespacing the filtered data to `pokemonIndex` was the correct way to fix that but I could be wrong. I also had issues with the evolution list. Only one species was coming from that endpoint. I think it was a deepClone issues but I had alread hit my time limit. I think my progress here shows my ability to learn and apply my skills from other JS frameworks.
