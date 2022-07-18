@@ -80,9 +80,6 @@ body {
   margin: 0;
 }
 
-.pokedex__details__body h2 {
-  margin: 0 0 .5em;
-}
-
-.pokedex__details__heading {
+.pokedex__details__heading h2 {
+  margin: 1em 0 0;
 }
