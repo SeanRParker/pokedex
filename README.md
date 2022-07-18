@@ -1,4 +1,4 @@
-# Givebutter Frontend Take-home
+# Pokedex Practice
 
 ## Overview
 
@@ -21,7 +21,6 @@ When you are finished, please upload your completed work to your Github and invi
 - This repo was scaffolded using `create-react-app`. As such, this app requires a stable version of `node` to get up and running.
 - Clone this repo and run `npm install`.
 - To run the app, run `npm start`.
-- Please reach out to the Givebutter team if you have any issues with the initial setup or have any problems when running the initial app.
 
 ## Requirements
 
