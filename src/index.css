@@ -34,7 +34,7 @@ body {
 .pokedex__search-results {
   border: 2px red solid;
   border-radius: 4px;
-  max-height: 80vh;
+  height: 80vh;
   margin: 0;
   padding: 0;
   overflow:auto;
@@ -66,6 +66,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-items:space-around;
+  padding-bottom: 1.5em;
 }
 
 .pokedex__details__body div{

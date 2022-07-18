@@ -8,6 +8,7 @@ function App() {
     const [pokemon, setPokemon] = useState([])
     const [searchValue, setSearchValue] = useState('')
     const [pokemonDetails, setPokemonDetails] = useState('')
+    const [evolutionList, setEvolutionList] = useState('')
 
     useEffect(() => {
         const fetchPokemon = async () => {
@@ -37,7 +38,8 @@ function App() {
 
     }
 
-    const onGetDetails = (name) => async () => {
+    const onGetDetails = (name, id) => async () => {
+        
         /** code here **/
         const fetchPokemonDetails = async (name) => {
             let detailList = await fetchPokemonDetailsByName(name)
@@ -48,24 +50,25 @@ function App() {
             console.log("OnGetDetails clicked: ", detailList);
 
 
-            return setPokemonDetails({name: detailList.name, typeList: typesList, moveList: movesList});
+            return setPokemonDetails({name: detailList.name, typeList: typesList, moveList: movesList, id: detailList.id});
         }
-        const fetchEvolutionDetails = async (name) => {
-            let evolutionList = await fetchEvolutionChainById(name)
+
+        const fetchEvolutionDetails = async (id) => {
+            let evolutionList = await fetchEvolutionChainById(id)
             
-            let evoList = evolutionList.moves.map(move => move.move.name);
-            console.log("OnGetDetails clicked (evolutionList): ", evolutionList);
+            let evoList = evolutionList;
+            console.log("OnGetDetails clicked (evolutionList): ", evoList);
 
 
-            return setPokemonDetails({name: detailList.name, typeList: typesList, moveList: movesList});
+            return setEvolutionList({evolutions: evolution, id: id});
         }
 
 
-        fetchPokemonDetails(name).then(() => {
+        fetchEvolutionDetails(id).then(() => {
             /** noop **/
         })
 
-        fetchEvolutionDetails(name).then(() => {
+        fetchPokemonDetails(name).then(() => {
             /** noop **/
         })
 

@@ -32,8 +32,8 @@ function Details(props) {
               </div>
           </div>
             <div className="pokedex__details__footer">
-                <div className="pokedex__details__body__moves">
-                <h2>Evolutions</h2>
+                <div className="pokedex__details__body__evolutions">
+                {/* <h2>Evolutions</h2> */}
             </div>
           </div>
       </div>
